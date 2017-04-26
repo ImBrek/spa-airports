@@ -2801,6 +2801,10 @@ https-browserify@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-0.0.1.tgz#3f91365cabe60b77ed0ebba24b454e3e09d95a82"
 
+icepick@^1.1.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/icepick/-/icepick-1.3.0.tgz#e4942842ed8f9ee778d7dd78f7e36627f49fdaef"
+
 iconv-lite@0.4.13:
   version "0.4.13"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.13.tgz#1f88aba4ab0b1508e8312acc39345f36e992e2f2"
@@ -2894,7 +2898,7 @@ interpret@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.3.tgz#cbc35c62eeee73f19ab7b10a801511401afc0f90"
 
-invariant@^2.0.0, invariant@^2.2.0, invariant@^2.2.1:
+invariant@^2.0.0, invariant@^2.2.0, invariant@^2.2.1, invariant@~2.2.1:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.2.tgz#9e1f56ac0acdb6bf303306f338be3b204ae60360"
   dependencies:
@@ -3636,6 +3640,10 @@ lodash.get@^3.7.0:
     lodash._baseget "^3.0.0"
     lodash._topath "^3.0.0"
 
+lodash.get@~4.4.2:
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
+
 lodash.isarray@^3.0.0:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/lodash.isarray/-/lodash.isarray-3.0.4.tgz#79e4eb88c36a8122af86f844aa9bcd851b5fbb55"
@@ -3687,6 +3695,10 @@ lodash.reject@^4.4.0:
 lodash.some@^4.4.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/lodash.some/-/lodash.some-4.6.0.tgz#1bb9f314ef6b8baded13b549169b2a945eb68e4d"
+
+lodash.topath@~4.5.2:
+  version "4.5.2"
+  resolved "https://registry.yarnpkg.com/lodash.topath/-/lodash.topath-4.5.2.tgz#3616351f3bba61994a0931989660bd03254fd009"
 
 lodash.uniq@^4.5.0:
   version "4.5.0"
@@ -4114,6 +4126,10 @@ number-is-nan@^1.0.0:
 oauth-sign@~0.8.1:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/oauth-sign/-/oauth-sign-0.8.2.tgz#46a6ab7f0aead8deae9ec0565780b7d4efeb9d43"
+
+object-assign@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-3.0.0.tgz#9bedd5ca0897949bca47e7ff408062d549f587f2"
 
 object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"
@@ -4718,7 +4734,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.0.0, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@~15.5.7:
+prop-types@^15.0.0, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@~15.5.7:
   version "15.5.8"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.8.tgz#6b7b2e141083be38c8595aa51fc55775c7199394"
   dependencies:
@@ -4822,6 +4838,22 @@ react-addons-test-utils@^15.4.2:
     fbjs "^0.8.4"
     object-assign "^4.1.0"
 
+react-autosuggest@^9.0.1:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/react-autosuggest/-/react-autosuggest-9.0.1.tgz#b56eaf8fc3dd46d36b92c5395b6b07174bc10912"
+  dependencies:
+    prop-types "^15.5.8"
+    react-autowhatever "^10.0.0"
+    shallow-equal "^1.0.0"
+
+react-autowhatever@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/react-autowhatever/-/react-autowhatever-10.0.0.tgz#2d7fd54f0a330e33c06c53a83ef789da0ebb65bf"
+  dependencies:
+    prop-types "^15.5.8"
+    react-themeable "^1.1.0"
+    section-iterator "^2.0.0"
+
 react-click-outside@^2.2.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/react-click-outside/-/react-click-outside-2.3.0.tgz#928d04b0d5f622ac0c66e2d3c481db1b3cd81ace"
@@ -4877,6 +4909,17 @@ react-proxy@^3.0.0-alpha.0:
   dependencies:
     lodash "^4.6.1"
 
+react-redux-form@^1.11.0:
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/react-redux-form/-/react-redux-form-1.11.0.tgz#81dd698a01687d81772381f792f7aa474de9ab80"
+  dependencies:
+    icepick "^1.1.0"
+    invariant "~2.2.1"
+    lodash.get "~4.4.2"
+    lodash.topath "~4.5.2"
+    prop-types "^15.5.6"
+    shallow-compare "1.2.1"
+
 react-redux@^5.0.1:
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.4.tgz#1563babadcfb2672f57f9ceaa439fb16bf85d55b"
@@ -4888,6 +4931,12 @@ react-redux@^5.0.1:
     lodash-es "^4.2.0"
     loose-envify "^1.1.0"
     prop-types "^15.0.0"
+
+react-themeable@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-themeable/-/react-themeable-1.1.0.tgz#7d4466dd9b2b5fa75058727825e9f152ba379a0e"
+  dependencies:
+    object-assign "^3.0.0"
 
 react-transform-catch-errors@^1.0.2:
   version "1.0.2"
@@ -5256,6 +5305,10 @@ sax@^1.2.1, sax@~1.2.1:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.2.tgz#fd8631a23bc7826bef5d871bdb87378c95647828"
 
+section-iterator@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/section-iterator/-/section-iterator-2.0.0.tgz#bf444d7afeeb94ad43c39ad2fb26151627ccba2a"
+
 "semver@2 || 3 || 4 || 5", semver@^5.3.0, semver@~5.3.0:
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.3.0.tgz#9b2ce5d3de02d17c6012ad326aa6b4d0cf54f94f"
@@ -5328,6 +5381,14 @@ sha.js@^2.3.6:
   resolved "https://registry.yarnpkg.com/sha.js/-/sha.js-2.4.8.tgz#37068c2c476b6baf402d14a49c67f597921f634f"
   dependencies:
     inherits "^2.0.1"
+
+shallow-compare@1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/shallow-compare/-/shallow-compare-1.2.1.tgz#6a42931a81f8ab52bfad229c14f1635e5488ba7a"
+
+shallow-equal@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/shallow-equal/-/shallow-equal-1.0.0.tgz#508d1838b3de590ab8757b011b25e430900945f7"
 
 shelljs@^0.7.5:
   version "0.7.7"
