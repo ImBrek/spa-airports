@@ -1,12 +1,10 @@
-import { createAction } from 'redux-actions';
-
 export const SUGGESTION = {
   REQUEST: 'SUGGESTION_REQUEST',
   SUCCESS: 'SUGGESTION_SUCCESS',
   CLEAR: 'SUGGESTION_CLEAR',
 };
 
-export const clearSuggestion = (model) => ({
+export const clearSuggestion = model => ({
   type: SUGGESTION.CLEAR,
   model,
   payload: {},
@@ -17,7 +15,7 @@ export const requestSuggestion = (model, value) => ({
   model,
   payload: {
     value,
-  }
+  },
 });
 
 export const successSuggestion = (model, suggestions) => ({
@@ -25,5 +23,5 @@ export const successSuggestion = (model, suggestions) => ({
   model,
   payload: {
     suggestions,
-  }
+  },
 });

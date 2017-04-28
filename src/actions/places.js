@@ -17,7 +17,7 @@ export const getPlaces = createAction(PLACES.READ.REQUEST, value => ({
     endpoint: 'match',
     queryParams: {
       max: 15,
-      term: value
-    }
-  }
+      term: value,
+    },
+  },
 }));

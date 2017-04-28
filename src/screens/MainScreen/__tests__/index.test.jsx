@@ -19,7 +19,7 @@ test('Transform list to tree', () => {
     { name: 'City4' },
     { name: 'City4', airportName: 'A1', isGrouped: true },
     { name: 'City4', airportName: 'A2', isGrouped: true },
-  ]
+  ];
 
   expect(transformSuggestions(source)).toEqual(result);
 });

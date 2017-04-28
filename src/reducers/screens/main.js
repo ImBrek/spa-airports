@@ -7,9 +7,9 @@ const formsReducer = combineForms({
     amount: 0,
     departure: '',
     destination: '',
-  }
+  },
 }, 'screens.main', {
-  plugins: [suggestionReducer]
+  plugins: [suggestionReducer],
 });
 
 export default function (oldState = {}, action) {

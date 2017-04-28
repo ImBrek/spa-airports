@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { initApp } from 'actions/app';
 import { actions, getModel, getField } from 'react-redux-form';
 import { requestSuggestion, clearSuggestion } from 'actions/suggestions';
 import Autosuggest from 'react-autosuggest';
@@ -17,7 +16,23 @@ const selector = (state, props) => {
   };
 };
 
-export class SuggestionInput extends React.Component {
+export class SuggestionInput extends Component {
+  static propTypes = {
+    change: PropTypes.func.isRequired,
+    blur: PropTypes.func.isRequired,
+    focus: PropTypes.func.isRequired,
+    renderSuggestion: PropTypes.func.isRequired,
+    getSuggestionValue: PropTypes.func.isRequired,
+    clearSuggestion: PropTypes.func.isRequired,
+    requestSuggestion: PropTypes.func.isRequired,
+    suggestions: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    value: PropTypes.string,
+  };
+
+  static defaultProps = {
+    value: '',
+  };
+
   @autobind
   handleChange(event) {
     this.props.change(event.target.value);
@@ -69,5 +84,5 @@ export default connect(selector, (dispatch, props) => bindActionCreators({
   change: actions.change.bind(null, props.model),
   focus: actions.focus.bind(null, props.model),
   blur: actions.blur.bind(null, props.model),
-}, dispatch))(SuggestionInput)
+}, dispatch))(SuggestionInput);
 

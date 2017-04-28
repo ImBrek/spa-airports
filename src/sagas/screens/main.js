@@ -8,7 +8,7 @@ export default function* mainScreen() {
     yield put(getPlaces(action.payload.value));
     const responseAction = yield take([PLACES.READ.SUCCESS, PLACES.READ.FAILURE]);
     if (!responseAction.error) {
-      yield put(successSuggestion(action.model, responseAction.payload.response))
+      yield put(successSuggestion(action.model, responseAction.payload.response));
     }
   }
 }

@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import _ from 'lodash';
-import { initApp } from 'actions/app';
 import { Form, Field, Errors } from 'react-redux-form';
-import { requestSuggestion, clearSuggestion } from 'actions/suggestions';
 import SuggestionInput from 'containers/SuggestionInput';
 import { submitForm } from 'actions/screens/main';
 import CSSModules from 'react-css-modules';
@@ -15,7 +13,7 @@ export function transformSuggestions(list) {
   const result = [];
   let group;
   const sorted = _.sortBy(list, ['name', 'airport_name']);
-  for (let i = 0; i < sorted.length; i++) {
+  for (let i = 0; i < sorted.length; i += 1) {
     const current = sorted[i];
     const next = sorted[i + 1];
     if (next && current.name === next.name && current.name !== group) {
@@ -26,7 +24,7 @@ export function transformSuggestions(list) {
       result.push({
         name: current.name,
         airportName: current.airport_name,
-        isGrouped: current.name === group
+        isGrouped: current.name === group,
       });
     }
   }
@@ -36,9 +34,9 @@ export function transformSuggestions(list) {
 
 const selector = createSelector(
   state => state.screens.main,
-  (screen) => ({
+  screen => ({
     data: screen.data || {},
-  })
+  }),
 );
 
 
@@ -48,7 +46,13 @@ const isLess10 = isLess(10);
 
 @CSSModules(styles)
 export class MainScreen extends Component {
-  static propTypes = {};
+  static propTypes = {
+    submitForm: PropTypes.func.isRequired,
+    data: PropTypes.shape({
+      // TODO
+    }).isRequired,
+
+  };
 
   static defaultProps = {};
 
@@ -63,16 +67,16 @@ export class MainScreen extends Component {
   renderSuggestion(suggestion) {
     const { airportName, name, isGrouped } = suggestion;
     if (!airportName) {
-      return <div>{name}</div>
+      return (<div>{name}</div>);
     }
     if (isGrouped) {
-      return <div> > {airportName}</div>
+      return (<div> -- {airportName}</div>);
     }
     return (
       <div>
         {name} / {airportName}
       </div>
-    )
+    );
   }
 
   render() {
@@ -88,7 +92,7 @@ export class MainScreen extends Component {
             model=".amount"
             validators={{
               isRequired,
-              isLess10
+              isLess10,
             }}
           >
             <input type="text" />
@@ -122,7 +126,7 @@ export class MainScreen extends Component {
         </Form>
         <div>Result: {JSON.stringify(data)}</div>
       </div>
-    )
+    );
   }
 }
 

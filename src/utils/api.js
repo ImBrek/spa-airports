@@ -36,7 +36,7 @@ const methods = {
  * @return {Promise.<{response: *}>}
  */
 export default function (options) {
-  const { endpoint, method, body, queryParams = '', credentials, headers = {}, schema } = options;
+  const { endpoint, method, body, queryParams = '', credentials, headers = {} } = options;
 
   const fullUrl = url.format({
     ...config.api,

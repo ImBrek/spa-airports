@@ -6,7 +6,7 @@
  * else dispatch FAILURE ACTION
  */
 
-import fetch, { API_CALL, API_STATUS } from 'utils/api';
+import fetch, { API_CALL } from 'utils/api';
 import { call, put, take, fork } from 'redux-saga/effects';
 import { successResponse, failResponse } from 'actions/api';
 /**

@@ -10,4 +10,4 @@ export default function (state, action, localPath) {
     default:
       return state;
   }
-};
+}
