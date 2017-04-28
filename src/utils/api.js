@@ -50,7 +50,6 @@ export default function (options) {
 
   // add content headers
   headers.Accept = 'application/json';
-  headers['Content-Type'] = 'application/json';
 
   return fetch(fullUrl, { method: httpMethod, body: bodySerialized, credentials, headers })
   // extract json body from request
