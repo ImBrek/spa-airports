@@ -26,7 +26,8 @@ export class SuggestionInput extends React.Component {
 
   @autobind
   handleSelect(event, { suggestion }) {
-    this.props.change(suggestion.name);
+    // TODO: move this to props
+    this.props.change(`${suggestion.name} ${suggestion.airportName}`);
     event.preventDefault();
   }
 

@@ -4,12 +4,10 @@ import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import _ from 'lodash';
 import { initApp } from 'actions/app';
-import { Control, Form, Field, actions, Errors, getModel, getField } from 'react-redux-form';
+import { Form, Field, Errors } from 'react-redux-form';
 import { requestSuggestion, clearSuggestion } from 'actions/suggestions';
-import Autosuggest from 'react-autosuggest';
-import { autobind } from 'core-decorators';
-import { bindActionCreators } from 'redux';
 import SuggestionInput from 'containers/SuggestionInput';
+import { submitForm } from 'actions/screens/main';
 
 export function transformSuggestions(list) {
   const result = [];
@@ -34,14 +32,18 @@ export function transformSuggestions(list) {
 }
 
 
-// import {
-//   screenActivate,
-//   screenDeactivate,
-// } from 'actions/screens/main';
+const selector = createSelector(
+  state => state.screens.main,
+  (screen) => ({
+    data: screen.data || {},
+  })
+);
 
 import CSSModules from 'react-css-modules';
 
 const isRequired = val => !!val;
+const isLess = max => val => val < max;
+const isLess10 = isLess(10);
 
 // @CSSModules(styles)
 export class MainScreen extends Component {
@@ -50,15 +52,11 @@ export class MainScreen extends Component {
   static defaultProps = {};
 
   componentWillMount() {
-    this.props.initApp();
   }
 
-  handleSubmit(data) {
-    console.log(data);
-  }
 
   getSuggestionValue(suggestion) {
-    return suggestion.name;
+    return `${suggestion.airportName}`;
   }
 
   renderSuggestion(suggestion) {
@@ -77,44 +75,54 @@ export class MainScreen extends Component {
   }
 
   render() {
+    const { data } = this.props;
     return (
-      <Form
-        model="screens.main.airports"
-        onSubmit={(user) => this.handleSubmit(user)}
-      >
-        <Field
-          model=".amount"
-          validators={{ isRequired }}
+      <div>
+        <Form
+          model="screens.main.airports"
+          onSubmit={this.props.submitForm}
         >
           <label>Passengers amount</label>
-          <input type="text" />
-          <Errors
+          <Field
             model=".amount"
-            messages={{
-              isRequired: 'Please enter passengers amount',
+            validators={{
+              isRequired,
+              isLess10
             }}
+          >
+            <input type="text" />
+            <Errors
+              model=".amount"
+              messages={{
+                isRequired: 'Please enter passengers amount',
+                isLess10: 'Max value in this field is 9',
+              }}
+            />
+          </Field>
+
+          <label>Departure</label>
+          <SuggestionInput
+            model="screens.main.airports.departure"
+            renderSuggestion={this.renderSuggestion}
+            getSuggestionValue={this.getSuggestionValue}
+            transformSuggestions={transformSuggestions}
           />
-        </Field>
+          <label>Destination</label>
+          <SuggestionInput
+            model="screens.main.airports.destination"
+            renderSuggestion={this.renderSuggestion}
+            getSuggestionValue={this.getSuggestionValue}
+            transformSuggestions={transformSuggestions}
+          />
 
-        <button type="submit">
-          Submit!
-        </button>
-
-        <SuggestionInput
-          model="screens.main.airports.departure"
-          renderSuggestion={this.renderSuggestion}
-          getSuggestionValue={this.getSuggestionValue}
-          transformSuggestions={transformSuggestions}
-        />
-        <SuggestionInput
-          model="screens.main.airports.destination"
-          renderSuggestion={this.renderSuggestion}
-          getSuggestionValue={this.getSuggestionValue}
-          transformSuggestions={transformSuggestions}
-        />
-      </Form>
+          <button type="submit">
+            Submit!
+          </button>
+        </Form>
+        <div>Result: {JSON.stringify(data)}</div>
+      </div>
     )
   }
 }
 
-export default connect(null, { initApp })(MainScreen);
+export default connect(selector, { submitForm })(MainScreen);
