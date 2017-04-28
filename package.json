@@ -16,8 +16,8 @@
   "devDependencies": {
     "autoprefixer": "^6.5.4",
     "css-loader": "^0.26.1",
-    "enzyme": "^2.7.0",
-    "enzyme-to-json": "^1.4.5",
+    "enzyme": "^2.8.2",
+    "enzyme-to-json": "^1.5.1",
     "eslint": "^3.15.0",
     "eslint-import-resolver-webpack": "^0.8.1",
     "express": "^4.13.3",
