@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import _ from 'lodash';
 import { initApp } from 'actions/app';
 import { actions, getModel, getField } from 'react-redux-form';
 import { requestSuggestion, clearSuggestion } from 'actions/suggestions';
 import Autosuggest from 'react-autosuggest';
 import { autobind } from 'core-decorators';
 import { bindActionCreators } from 'redux';
+import styles from './styles.scss';
 
 const selector = (state, props) => {
   const field = getField(state, props.model);
@@ -17,7 +17,6 @@ const selector = (state, props) => {
   };
 };
 
-@connect(selector,)
 export class SuggestionInput extends React.Component {
   @autobind
   handleChange(event) {
@@ -58,6 +57,7 @@ export class SuggestionInput extends React.Component {
         renderSuggestion={renderSuggestion}
         onSuggestionSelected={this.handleSelect}
         inputProps={inputProps}
+        theme={styles}
       />
     );
   }

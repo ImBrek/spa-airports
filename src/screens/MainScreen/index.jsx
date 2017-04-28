@@ -8,6 +8,8 @@ import { Form, Field, Errors } from 'react-redux-form';
 import { requestSuggestion, clearSuggestion } from 'actions/suggestions';
 import SuggestionInput from 'containers/SuggestionInput';
 import { submitForm } from 'actions/screens/main';
+import CSSModules from 'react-css-modules';
+import styles from './styles.scss';
 
 export function transformSuggestions(list) {
   const result = [];
@@ -39,13 +41,12 @@ const selector = createSelector(
   })
 );
 
-import CSSModules from 'react-css-modules';
 
 const isRequired = val => !!val;
 const isLess = max => val => val < max;
 const isLess10 = isLess(10);
 
-// @CSSModules(styles)
+@CSSModules(styles)
 export class MainScreen extends Component {
   static propTypes = {};
 
@@ -100,14 +101,14 @@ export class MainScreen extends Component {
             />
           </Field>
 
-          <label>Departure</label>
+          <label styleName="row">Departure</label>
           <SuggestionInput
             model="screens.main.airports.departure"
             renderSuggestion={this.renderSuggestion}
             getSuggestionValue={this.getSuggestionValue}
             transformSuggestions={transformSuggestions}
           />
-          <label>Destination</label>
+          <label styleName="row">Destination</label>
           <SuggestionInput
             model="screens.main.airports.destination"
             renderSuggestion={this.renderSuggestion}
@@ -115,7 +116,7 @@ export class MainScreen extends Component {
             transformSuggestions={transformSuggestions}
           />
 
-          <button type="submit">
+          <button styleName="submit" type="submit">
             Submit!
           </button>
         </Form>
